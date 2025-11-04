@@ -1,4 +1,4 @@
-name: Build APK
+name: Build Flutter APK
 
 on:
   workflow_dispatch:
@@ -11,19 +11,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          flutter-version: '3.19.6'
+      - name: Setup Flutter SDK
+        run: |
+          git clone https://github.com/flutter/flutter.git --branch stable
+          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+          flutter doctor
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK
+      - name: Build release APK
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
