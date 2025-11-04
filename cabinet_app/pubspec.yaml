@@ -1,0 +1,24 @@
+name: cabinet_app
+description: اپ حسابداری و انبار کابینت - MVP فارسی
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.0
+  cloud_firestore: ^4.8.0
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
